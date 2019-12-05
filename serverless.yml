@@ -1,0 +1,59 @@
+custom:
+  prefix: ${env:SERVICE}-${env:NODE_ENV}-
+  dotenv:
+    file: file(./.env.${self:provider.stage)
+    basePath: ./
+
+service: ${env:SERVICE}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${env:REGION}
+  timeout: 15
+  environment:
+    STAGE: ${self:provider.stage}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+#      Resource:
+#        - { Fn::GetAtt: ["${env:DB_NAME}", 'Arn'] }
+
+functions:
+  - prices:
+      handler: handler.hello_world
+      events:
+      - http:
+          path: /hello_world
+          method: get
+
+#resources:
+#  Resources:
+#    tableName:
+#      Type: 'AWS::DynamoDB::Table'
+#      DeletionPolicy: ${env:DB_DEL_POLICY}
+#      Properties:
+#        TableName: ${self:custom.prefix}${env:DB_NAME}
+#        AttributeDefinitions:
+#          - AttributeName: id
+#            AttributeType: N
+#        KeySchema:
+#          - AttributeName: id
+#            KeyType: HASH
+#        BillingMode: PAY_PER_REQUEST
+
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-include-dependencies
+
+
