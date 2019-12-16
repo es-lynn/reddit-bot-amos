@@ -24,20 +24,23 @@ export const Reddit = new AppRedditAPI({
 
 export const DB_Posts = new AppDyanmoDB<Post>(Config.AWS_REGION, Config.DB_POSTS)
 
-export const Log = new Logger()
-	.add_log_streams(
-		new ConsoleStream(),
-		new ExpressJS({max: 1000, path: 'logs', port: 3000})
-	)
-	.add_event_streams(
-		['development','testing'].includes(Config.NODE_ENV) ?
-			new ExpressJSEvents({max: 1000, path: 'events', port: 3001}): new MixpanelStream(Config.MIXPANEL_TOKEN)
-	)
-	.add_error_streams(
-		['development','testing'].includes(Config.NODE_ENV) ?
-			new ExpressJSEvents({max: 1000, path: 'errors', port: 3002}) : new MixpanelStream(Config.MIXPANEL_TOKEN)
-	)
-	.add_timing_streams(
-		['development','testing'].includes(Config.NODE_ENV) ?
-			new ExpressJSMetrics({max: 1000, path: 'metrics', port: 3003}) : new AWSMetrics(Config.SERVICE, Config.AWS_REGION)
-	)
+export const Log =
+	Config.NODE_ENV === 'test' ?
+		new Logger() :
+		new Logger()
+			.add_log_streams(
+				new ConsoleStream(),
+				new ExpressJS({max: 1000, path: 'logs', port: 3000})
+			)
+			.add_event_streams(
+				['development','testing'].includes(Config.NODE_ENV) ?
+					new ExpressJSEvents({max: 1000, path: 'events', port: 3001}): new MixpanelStream(Config.MIXPANEL_TOKEN)
+			)
+			.add_error_streams(
+				['development','testing'].includes(Config.NODE_ENV) ?
+					new ExpressJSEvents({max: 1000, path: 'errors', port: 3002}) : new MixpanelStream(Config.MIXPANEL_TOKEN)
+			)
+			.add_timing_streams(
+				['development','testing'].includes(Config.NODE_ENV) ?
+					new ExpressJSMetrics({max: 1000, path: 'metrics', port: 3003}) : new AWSMetrics(Config.SERVICE, Config.AWS_REGION)
+			)

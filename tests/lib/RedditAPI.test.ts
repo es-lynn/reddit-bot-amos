@@ -1,6 +1,6 @@
 import RedditAPI from '../../lib/reddit_api/RedditAPI'
-import Config from "../../src/app/Configuration";
-import {Kind} from "../../lib/reddit_api/types/Post.type";
+import Config from '../../src/app/Configuration'
+import {Kind} from '../../lib/reddit_api/types/Post.type'
 
 describe('RedditAPI', () => {
 
@@ -8,12 +8,13 @@ describe('RedditAPI', () => {
 		client_id: Config.O2A_CLIENT_ID,
 		client_secret: Config.O2A_SECRET,
 		password: Config.O2A_PASSWORD,
-		username: Config.REDDIT_SELF
+		username: Config.REDDIT_SELF,
+		user_agent: Config.O2A_USER_AGENT
 	})
 
 	test('Comments', async () => {
 		let results = await reddit.comments('testingground4bots')
-		console.log(results[0])
+		// console.log(results[0])
 		expect(results.length).toEqual(25)
 		results.forEach((r)=>{
 			expect(r.kind).toEqual(Kind.Comment)

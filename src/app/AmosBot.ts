@@ -32,7 +32,7 @@ export class AmosBot {
 		])
 
 		let comments = Filter.unread_comments(result[0])
-			.filter(Filter.self_posts)
+			.filter(Filter.rm_self_posts)
 		let threads = Filter.unread_threads(result[1])
 
 		if (!comments.is_empty())
