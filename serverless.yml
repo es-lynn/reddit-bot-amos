@@ -9,7 +9,7 @@ service: ${env:SERVICE}
 provider:
   name: aws
   runtime: nodejs8.10
-  region: ${env:REGION}
+  region: ${env:AWS_REGION}
   timeout: 15
   environment:
     STAGE: ${self:provider.stage}
@@ -23,16 +23,31 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-#      Resource:
-#        - { Fn::GetAtt: ["${env:DB_NAME}", 'Arn'] }
+      Resource:
+        - { Fn::GetAtt: ["${env:DB_POSTS}", 'Arn'] }
 
-functions:
-  - prices:
-      handler: handler.hello_world
-      events:
-      - http:
-          path: /hello_world
-          method: get
+#functions:
+#  - prices:
+#      handler: handler.hello_world
+#      events:
+#      - http:
+#          path: /hello_world
+#          method: get
+
+resources:
+  Resources:
+    tableName:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: ${env:DB_DEL_POLICY}
+      Properties:
+        TableName: ${self:custom.prefix}${env:DB_POSTS}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
 
 #resources:
 #  Resources:
@@ -51,7 +66,6 @@ functions:
 
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-offline
   - serverless-dotenv-plugin
   - serverless-plugin-include-dependencies
