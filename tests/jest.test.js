@@ -1,18 +1,36 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
+Object.defineProperty(exports, "__esModule", { value: true });
 describe('Describe', () => {
-    test('Test Pass', () => __awaiter(void 0, void 0, void 0, function* () {
+    test('Test Pass', async () => {
         expect('1').toBe('1');
-    }));
-    test('Test Fail', () => __awaiter(void 0, void 0, void 0, function* () {
-        expect('1').toBe('2');
-    }));
+    });
+    //
+    // test('Test Fail', async () => {
+    // 	expect('1').toBe('2')
+    // })
+    //
+    // test('DB', async () => {
+    // 	// let posts = (await Reddit.comments('singapore'))
+    // 	// await DB_Posts.insert(posts[0].date.toString(), posts[0])
+    // 	// await DB_Posts.insert(posts[1].date.toString(), posts[1])
+    // 	// await DB_Posts.insert(posts[2].date.toString(), posts[2])
+    // 	// console.log(await DB_Posts.scan())
+    // 	let bot = new AmosBot()
+    // 	await bot.init()
+    // 	await bot.run()
+    // 	console.log('help')
+    // })
+    //
+    // test('Random', async()=> {
+    // 	console.log(Reply.reset_counter(
+    // 		{date: 1576178177 } as any,
+    // 		{date: 1575909730} as any
+    // 	))
+    // })
+    //
+    // test('asd', async()=> {
+    // 	console.log('start')
+    // 	await sleep('5'.sec())
+    // 	console.log('5 seconds later')
+    // })
 });
