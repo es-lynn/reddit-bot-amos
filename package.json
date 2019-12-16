@@ -6,12 +6,19 @@
   "scripts": {
     "index": "NODE_ENV=development node index.js",
     "index_win": "set NODE_ENV=development&&node index.js",
+    "index_staging": "NODE_ENV=staging node index.js",
+    "index_win_staging": "set NODE_ENV=staging&&node index.js",
+    "index_production": "NODE_ENV=production node index.js",
     "start": "NODE_ENV=development serverless offline start",
     "start_win": "set NODE_ENV=development&&serverless offline start",
+    "start_staging": "NODE_ENV=staging serverless offline start",
+    "start_win_staging": "set NODE_ENV=staging&&serverless offline start",
     "test": "NODE_ENV=test jest --setupFiles dotenv/config",
     "test_win": "set NODE_ENV=test&&jest --setupFiles dotenv/config",
     "deploy": "NODE_ENV=development serverless deploy --stage development",
     "deploy_win": "set NODE_ENV=development&&tsc&&serverless deploy --stage development",
+    "deploy_staging": "NODE_ENV=staging serverless deploy --stage staging",
+    "deploy_production": "NODE_ENV=production serverless deploy --stage production",
     "remove": "NODE_ENV=development serverless remove --stage development"
   },
   "author": "aelesia",
@@ -32,6 +39,7 @@
   "dependencies": {
     "@types/node": "^12.12.17",
     "@typescript-eslint/parser": "^2.10.0",
+    "@aelesia/http": "^0.1.3",
     "aws-sdk": "^2.585.0",
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",

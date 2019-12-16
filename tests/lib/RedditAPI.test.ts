@@ -1,6 +1,6 @@
 import RedditAPI from '../../lib/reddit_api/RedditAPI'
-import Config from "../../src/app/Configuration";
-import {Kind} from "../../lib/reddit_api/types/Post.type";
+import Config from '../../src/app/Configuration'
+import {Kind} from '../../lib/reddit_api/types/Post.type'
 
 describe('RedditAPI', () => {
 
@@ -8,7 +8,8 @@ describe('RedditAPI', () => {
 		client_id: Config.O2A_CLIENT_ID,
 		client_secret: Config.O2A_SECRET,
 		password: Config.O2A_PASSWORD,
-		username: Config.REDDIT_SELF
+		username: Config.REDDIT_SELF,
+		user_agent: Config.O2A_USER_AGENT
 	})
 
 	test('Comments', async () => {
