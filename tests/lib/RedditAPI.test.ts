@@ -14,7 +14,7 @@ describe('RedditAPI', () => {
 
 	test('Comments', async () => {
 		let results = await reddit.comments('testingground4bots')
-		console.log(results[0])
+		// console.log(results[0])
 		expect(results.length).toEqual(25)
 		results.forEach((r)=>{
 			expect(r.kind).toEqual(Kind.Comment)

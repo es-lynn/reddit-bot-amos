@@ -46,6 +46,7 @@ export default class RedditAPI {
 				body: it.data.body,
 				date: it.data.created_utc,
 				kind: Kind.Comment,
+				parent_id: it.data.parent_id,
 				thread_id: it.data.link_id,
 				title: it.data.link_title,
 				url: `https://reddit.com${it.data.permalink}`
@@ -60,15 +61,18 @@ export default class RedditAPI {
 			.data
 
 		return data.data.children.map<Post>(it=>{
+			// HACK: AWS DyanmoDB cannot insert keys with empty values
+			//  Please fix AWS DynamoDB insert function instead!
 			return {
 				id: it.data.name,
 				author: it.data.author,
-				body: it.data.selftext,
+				// body: it.data.selftext
+				body: it.data.selftext === '' ? '<empty>' : it.data.selftext,
 				date: it.data.created_utc,
 				kind: Kind.Thread,
 				thread_id: it.data.name,
 				title: it.data.title,
-				url: it.data.url
+				url: it.data.url,
 			}
 		})
 	}
@@ -86,17 +90,6 @@ export default class RedditAPI {
 			throw new RedditAPIErr.General(`${JSON.stringify(resp.data)}`)
 		}
 	}
-
-	/** @deprecated **/
-	// async token(): Promise<Token> {
-	// 	return (await Http.url('https://www.reddit.com/api/v1/access_token')
-	// 		.header('User-Agent', '')
-	// 		.auth_basic('OXd8vQmT6UT-hQ', '5YKPwq082vsk_Eu5IVKvg_6v5TA')
-	// 		.body_forms<TokenForm>({
-	// 		})
-	// 		.post<Token>())
-	// 		.data
-	// }
 
 	async me() :Promise<Me> {
 		return (await this.oauth2

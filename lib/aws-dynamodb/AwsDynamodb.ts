@@ -31,6 +31,7 @@ export class AwsDynamodb<T extends object> extends Database<T> {
 		})
 	}
 
+	// FIXME: Sanitize keys with empty/null/undefined values
 	async insert(key: string, value: T): Promise<void> {
 		const id = { id: key }
 		const new_data = {...id, ...value}

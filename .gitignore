@@ -13,11 +13,12 @@ jspm_packages
 !jest.*.js
 
 .env.development
-.env.testing
-.env.staging
+.env.test
+.env.test
 .env.production
 
 .vscode
 .idea
 
 package-lock.json
+.env.staging

@@ -10,14 +10,14 @@ export class AppDyanmoDB<T extends object> extends AwsDynamodb<T> {
 	async scan(): Promise<T[]> {
 		let log = Log.start_timer()
 		let a = await super.scan()
-		log.info(`DDB.${this.pretty()}.scan`, {items: a.length}).track_time().count()
+		log.info(`DDB.${this.pretty()}_scan`, {items: a.length}).track_time().count()
 		return a
 	}
 
 	async insert(key: string, value: T): Promise<void> {
 		let log = Log.start_timer()
 		let a = await super.insert(key, value)
-		log.info(`DDB.${this.pretty()}.insert`, key).track_time().count()
+		log.info(`DDB.${this.pretty()}_insert`, key).track_time().count()
 		return a
 	}
 

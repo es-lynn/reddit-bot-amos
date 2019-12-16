@@ -12,6 +12,7 @@ export type Post = {
 	url: string
 	author: string
 	thread_id: string
+	parent_id?: string
 	title: string
 	body: string
 	date: number

@@ -1,6 +1,7 @@
 import {Post} from '../../lib/reddit_api/types/Post.type'
 import Config from '../app/Configuration'
 import {Log} from '../app/Spring'
+import {bool} from "aws-sdk/clients/signer";
 
 class Filter {
 
@@ -29,12 +30,24 @@ class Filter {
 		return unread
 	}
 
-	self_posts(post: Post): boolean {
+	rm_self_posts(post: Post): boolean {
 		if (post.author === Config.REDDIT_SELF) {
 			Log.info('filter.self', {id: post.id})
 			return false
 		}
 		return true
+	}
+
+	rm_responded_posts(posts: Post[]): Post[] {
+		let self_posts = posts
+			.filter(it=>{return it.author === Config.REDDIT_SELF})
+			.map(it=>{return it.parent_id})
+		return posts.filter(it => {
+			if (self_posts.includes(it.id)) {
+				Log.info('filter.responded', {id: it.id})
+			}
+			return true
+		})
 	}
 
 	reset_cache(): void {
