@@ -20,6 +20,7 @@
     "deploy_staging": "NODE_ENV=staging serverless deploy --stage staging",
     "deploy_staging_win": "set NODE_ENV=staging&&tsc&&serverless deploy --stage staging",
     "deploy_production": "NODE_ENV=production serverless deploy --stage production",
+    "deploy_production_win": "set NODE_ENV=production&&tsc&&serverless deploy --stage production",
     "remove": "NODE_ENV=development serverless remove --stage development"
   },
   "author": "aelesia",
