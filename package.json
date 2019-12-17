@@ -1,6 +1,6 @@
 {
   "name": "reddit-bot-amos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Triggers whenever Amos Yee is mentioned",
   "main": "handler.js",
   "scripts": {
@@ -41,7 +41,7 @@
   "dependencies": {
     "@types/node": "^12.12.17",
     "@typescript-eslint/parser": "^2.10.0",
-    "@aelesia/http": "^0.1.3",
+    "@aelesia/http": "^0.1.4",
     "aws-sdk": "^2.585.0",
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",

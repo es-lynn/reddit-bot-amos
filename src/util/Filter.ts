@@ -45,6 +45,7 @@ class Filter {
 		return posts.filter(it => {
 			if (self_posts.includes(it.id)) {
 				Log.info('filter.responded', {id: it.id})
+				return false
 			}
 			return true
 		})
