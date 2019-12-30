@@ -5,20 +5,30 @@ import {InvalidArgumentError} from '../../lib/ext/Errors'
 export default class Logic {
 
 	static is_amos_yee_comment(comment: Post): boolean {
-		if (comment.body.toLowerCase().includes('amos yee')) {
-			Log.info('is_amos_yee_comment', comment.id).count()
+		if (this.contains_amos_yee_beside(comment.body)
+			|| this.contains_amos_and_yee_exact(comment.body)) {
+			Log.info('is_amos_yee_comment', comment.id)
 			return true
 		}
 		return false
 	}
 
 	static is_amos_yee_thread(thread: Post): boolean {
-		if (thread.body.toLowerCase().includes('amos yee')
+		if (this.contains_amos_yee_beside(thread.body)
+			|| this.contains_amos_and_yee_exact(thread.body)
 			|| thread.title.toLowerCase().includes('amos')) {
-			Log.info('is_amos_yee_thread', thread.id).count()
+			Log.info('is_amos_yee_thread', thread.id)
 			return true
 		}
 		return false
+	}
+
+	static contains_amos_yee_beside(text: string): boolean {
+		return /\w*amos\w*[ ,.]*\w*yee\w*/g.test(text.toLowerCase())
+	}
+
+	static contains_amos_and_yee_exact(text: string): boolean {
+		return /\bamos\b/g.test(text.toLowerCase()) && /\byee\b/g.test(text.toLowerCase())
 	}
 
 	static is_amos_yee_post(post: Post): boolean {
@@ -37,10 +47,10 @@ export default class Logic {
 		if (!past_threads.some(it=>{
 			return post.thread_id === it.thread_id
 		})) {
-			Log.info('is_new_amos_thread', {id: post.id, title: post.title}).count()
+			Log.info('is_new_amos_thread', {id: post.id, title: post.title})
 			return true
 		}
-		Log.info('is_old_amos_thread', {id: post.id, title: post.title}).count()
+		Log.info('is_old_amos_thread', {id: post.id, title: post.title})
 		return false
 	}
 }

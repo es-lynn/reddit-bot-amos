@@ -1,6 +1,7 @@
 import {AmosBot} from '../src/app/AmosBot'
 import {Reply} from '../src/app/Reply'
 import {sleep} from '../lib/ext/Control'
+
 describe('Describe', () => {
 
 	test('Test Pass', async () => {

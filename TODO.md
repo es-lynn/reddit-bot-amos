@@ -1,11 +1,11 @@
 TODO:
 - Unit Tests
-- Deploy
+~~- Deploy~~
 
 Mostly really happy how this turned out. Took a bit longer than I thought, but I like how re-usable everything is. While the Logger library isn't perfect, but it's close to achiving what I want it to do.
  
 Bot:
-- Better failure retry rather than resetting all posts.
+~~- Better failure retry rather than resetting all posts.~~
 - Enhancements? 
 
 Logger:
@@ -25,10 +25,21 @@ HTTP:
 - Really proud of how you figured out how to do it elegantly but more work still needs to be done
 - Handle logging for it better. It should not leak.
 - O2A for other flows.
-- Strict immutablity
+~~- Strict immutablity~~
 
 Utils:
-- Need a Utility version of my prototypes
-- Split them up into Utils & prototypes
-- Need a format class for strings, and dates
-- Dynamic left/right padder?
+~~- Need a Utility version of my prototypes~~
+~~- Split them up into Utils & prototypes~~
+~~- Need a format class for strings, and dates~~
+~~- Dynamic left/right padder?~~
+- Re-export everything
+- Scope things
+- Control global
+
+npm template
+npx template
+github actions
+
+Amos Yee thread
+- contains(Amos) && contains(Yee) && next to each other
+- amos && yee but not next to each other

@@ -26,7 +26,7 @@ export const DB_Posts = new AppDyanmoDB<Post>(Config.AWS_REGION, Config.DB_POSTS
 
 export const Log =
 	Config.NODE_ENV === 'test' ?
-		new Logger() :
+		new Logger().add_log_streams(new ConsoleStream()) :
 		new Logger()
 			.add_log_streams(
 				new ConsoleStream(),

@@ -1,9 +1,11 @@
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` })
+const pkg = require('../../package.json')
 
 class Configuration {
 
 	readonly NODE_ENV: string = Configuration.dotenv('NODE_ENV')
 	readonly SERVICE: string = Configuration.dotenv('SERVICE')
+	readonly VERSION: string = pkg.version
 
 	readonly INTERVAL: number = '15'.sec()
 	readonly SUBREDDIT: string = Configuration.dotenv('SUBREDDIT')
