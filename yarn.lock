@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@aelesia/commons@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.0.1.tgz#b51cda3240328395506fb296bdcfbe0408ea082f"
-  integrity sha512-NXkfhdNi4qFATeUmXYGefVgJAJQkj1k1rVtmUPZgG7sIicbWz5STr/1paSzdjacM/DmA67jijyBMj7GE439I1Q==
+"@aelesia/commons@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.0.2.tgz#6ddb8d3a459255af2c9e70f13c7922df29a9d87b"
+  integrity sha512-eC+gVZ4xI0UrIvsYu3fyERbiGC4LPo4A6sK2bPfy8K+ggm/cimfrrD/aekU7KQT6joAOuB72VoesdYU9W9gFxQ==
   dependencies:
     dayjs "^1.8.18"
 

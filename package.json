@@ -43,7 +43,7 @@
     "@types/node": "^12.12.17",
     "@typescript-eslint/parser": "^2.10.0",
     "@aelesia/http": "^0.1.4",
-    "@aelesia/commons": "^0.0.1",
+    "@aelesia/commons": "^0.0.2",
     "aws-sdk": "^2.585.0",
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
