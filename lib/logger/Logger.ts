@@ -1,6 +1,6 @@
 import {UninitializedError} from '../ext/Errors'
 import {Metric} from '../aws-cloudwatch-metric/CloudwatchMetric'
-import {Time} from '../ext/Time'
+import {DateUtil} from '@aelesia/commons'
 
 export enum LogLevel {
 	SILENT,
@@ -133,7 +133,7 @@ export class Logger {
 			timestamp: new Date(),
 			error: e,
 			level,
-			elapsed: this.start_time ? Time.elapsed_ms(this.start_time) : undefined
+			elapsed: this.start_time ? DateUtil.elapsed(this.start_time) : undefined
 		}
 		if (logger._log.level !== LogLevel.SILENT) {
 			logger._log_streams.forEach((stream) => {

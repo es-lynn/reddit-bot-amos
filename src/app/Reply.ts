@@ -1,5 +1,4 @@
 import {Post} from '../../lib/reddit_api/types/Post.type'
-import {Time} from '../../lib/ext/Time'
 import {DateUtil} from '@aelesia/commons'
 import Config from './Configuration'
 
@@ -12,7 +11,7 @@ export class Reply {
 		str += '🎉 **RESET THE COUNTER!!!** 🎉\n\n'
 		str += 'It has been '
 		str += `_${Reply.adjective()}_ `
-		str += `**${Reply.pretty_time(Time.elapsed(last_post.date, post.date))}** `
+		str += `**${Reply.pretty_time(DateUtil.elapsed(last_post.date, post.date))}** `
 		str += 'since we\'ve had an intellectual discussion about Amos Yee!\n\n'
 		str += `Last mentioned by ${last_post.author} `
 		str += `on **${DateUtil._f(post.date, 'DD MMMM YYYY')}**`
@@ -46,14 +45,14 @@ export class Reply {
 	}
 
 	private static pretty_time(unix_time: number): string {
-		if (unix_time < 120) {
+		if (unix_time < 120000) {
 			return `${Math.floor(unix_time)} seconds`
-		} else if (unix_time < 7200) {
+		} else if (unix_time < 7200000) {
 			return `${Math.floor(unix_time/60)} minutes`
-		} else if (unix_time < 172800) {
-			return `${Math.floor(unix_time/3600)} hours`
+		} else if (unix_time < 172800000) {
+			return `${Math.floor(unix_time/3600000)} hours`
 		} else {
-			return `${Math.floor(unix_time/86400)} days`
+			return `${Math.floor(unix_time/86400000)} days`
 		}
 	}
 
