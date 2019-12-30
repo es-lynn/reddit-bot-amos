@@ -1,5 +1,6 @@
 import {Kind} from '../lib/reddit_api/types/Post.type'
 import {Reply} from '../src/app/Reply'
+import {DateUtil, StringUtil} from "@aelesia/commons";
 
 describe('Reply', () => {
 
@@ -16,5 +17,23 @@ describe('Reply', () => {
 			url: 'http://url.com'
 		} as any))
 	})
+
+	test('Pretty Time', async () => {
+		// @ts-ignore
+		expect (Reply.pretty_time('30'.sec())).toEqual('30 seconds')
+		// @ts-ignore
+		expect (Reply.pretty_time('90'.sec())).toEqual('90 seconds')
+		// @ts-ignore
+		expect (Reply.pretty_time('2'.min())).toEqual('2 minutes')
+		// @ts-ignore
+		expect (Reply.pretty_time('99'.min())).toEqual('99 minutes')
+		// @ts-ignore
+		expect (Reply.pretty_time('3'.hour())).toEqual('3 hours')
+		// @ts-ignore
+		expect (Reply.pretty_time('47'.hour())).toEqual('47 hours')
+		// @ts-ignore
+		expect (Reply.pretty_time('49'.hour())).toEqual('2 days')
+	})
+
 
 })

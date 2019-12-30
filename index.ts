@@ -1,5 +1,3 @@
-import Time from './lib/ext/util/Time'
-
 require('./lib/ext/Array')
 require('./lib/ext/String')
 import {AmosBot} from './src/app/AmosBot'
@@ -7,8 +5,6 @@ import {RedditAPIErr} from './lib/reddit_api/RedditAPIErr'
 import {Log} from './src/app/Spring'
 import Filter from './src/util/Filter'
 import Config from './src/app/Configuration'
-
-Time.ext();
 
 (async()=>{
 	let bot = new AmosBot()
