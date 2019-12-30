@@ -46,9 +46,9 @@ export class Reply {
 
 	private static pretty_time(unix_time: number): string {
 		if (unix_time < 120000) {
-			return `${Math.floor(unix_time)} seconds`
+			return `${Math.floor(unix_time/1000)} seconds`
 		} else if (unix_time < 7200000) {
-			return `${Math.floor(unix_time/60)} minutes`
+			return `${Math.floor(unix_time/60000)} minutes`
 		} else if (unix_time < 172800000) {
 			return `${Math.floor(unix_time/3600000)} hours`
 		} else {
