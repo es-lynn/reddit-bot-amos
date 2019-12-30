@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const ext_1 = require("@aelesia/ext");
 describe('Describe', () => {
     test('Test Pass', async () => {
         expect('1').toBe('1');
+        console.log(ext_1.Time.now().utc());
     });
     //
     // test('Test Fail', async () => {

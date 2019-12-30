@@ -1,10 +1,13 @@
 import {AmosBot} from '../src/app/AmosBot'
 import {Reply} from '../src/app/Reply'
 import {sleep} from '../lib/ext/Control'
+import {Time, date} from '@aelesia/ext'
+
 describe('Describe', () => {
 
 	test('Test Pass', async () => {
 		expect('1').toBe('1')
+		console.log(Time.now().utc())
 	})
 	//
 	// test('Test Fail', async () => {

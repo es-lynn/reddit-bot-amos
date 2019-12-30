@@ -21,7 +21,8 @@
     "deploy_staging_win": "set NODE_ENV=staging&&tsc&&serverless deploy --stage staging",
     "deploy_production": "NODE_ENV=production serverless deploy --stage production",
     "deploy_production_win": "set NODE_ENV=production&&tsc&&serverless deploy --stage production",
-    "remove": "NODE_ENV=development serverless remove --stage development"
+    "remove": "NODE_ENV=development serverless remove --stage development",
+    "run": "tsc && NODE_ENV=production node index.js"
   },
   "author": "aelesia",
   "license": "MIT",
@@ -42,6 +43,7 @@
     "@types/node": "^12.12.17",
     "@typescript-eslint/parser": "^2.10.0",
     "@aelesia/http": "^0.1.4",
+    "@aelesia/commons": "^0.0.1",
     "aws-sdk": "^2.585.0",
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
