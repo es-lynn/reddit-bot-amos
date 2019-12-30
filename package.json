@@ -6,9 +6,9 @@
   "scripts": {
     "index": "NODE_ENV=development node index.js",
     "index_win": "set NODE_ENV=development&&node index.js",
-    "index_staging": "tsc && NODE_ENV=staging node index.js",
+    "index_staging": "yarn install && tsc && NODE_ENV=staging node index.js",
     "index_staging_win": "set NODE_ENV=staging&&node index.js",
-    "index_production": "tsc && NODE_ENV=production node index.js",
+    "index_production": "yarn install && tsc && NODE_ENV=production node index.js",
     "start": "NODE_ENV=development serverless offline start",
     "start_win": "set NODE_ENV=development&&serverless offline start",
     "start_staging": "NODE_ENV=staging serverless offline start",
