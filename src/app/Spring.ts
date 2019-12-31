@@ -10,6 +10,7 @@ import {MixpanelStream} from '../../lib/logger/analytics/MixpanelAnalytics'
 import {AWSMetrics} from '../../lib/logger/metrics/AWSMetrics'
 import {ExpressJSEvents} from '../../lib/logger/analytics/ExpressJSEvents'
 import {ExpressJSMetrics} from '../../lib/logger/metrics/ExpressJSMetrics'
+import {Log as HttpLog} from '@aelesia/http'
 
 AWS.config.secretAccessKey = Config.AWS_SECRET_ACCESS_KEY
 AWS.config.accessKeyId = Config.AWS_ACCESS_KEY
@@ -44,3 +45,5 @@ export const Log =
 				['development','testing'].includes(Config.NODE_ENV) ?
 					new ExpressJSMetrics({max: 1000, path: 'metrics', port: 3003}) : new AWSMetrics(Config.SERVICE, Config.AWS_REGION)
 			)
+
+HttpLog.stream = (log) => { console.info(log) }
