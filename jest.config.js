@@ -4,11 +4,11 @@ module.exports = {
 	],
 	setupFiles: ['dotenv/config'],
 	setupFilesAfterEnv: ['./jest.setup.js'],
-	'testEnvironment': 'node',
-	'transform': {
+	testEnvironment: 'node',
+	transform: {
 		'^.+\\.tsx?$': 'ts-jest'
 	},
-	'testRegex':
-		'(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'
-
+	testRegex:
+		'(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+  testPathIgnorePatterns: ['/node_modules/','RedditAPI.test.ts']
 }
