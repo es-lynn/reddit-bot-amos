@@ -66,4 +66,43 @@ describe('RedditAPI', () => {
 			't3_eaiqlw',
 			'[Jest Test] RedditAPI.test.ts')
 	})
+
+	test('Search', async() => {
+		let results = await reddit.search_all('bot-aelesia-dev')
+		expect(results.length > 0)
+		results.forEach((r)=>{
+			expect(r.kind).not.toBeNull()
+			expect(r.date).not.toBeNull()
+			expect(r.url).not.toBeNull()
+			expect(r.title).not.toBeNull()
+			expect(r.thread_id).not.toBeNull()
+			expect(r.id).not.toBeNull()
+			expect(r.body).not.toBeNull()
+			expect(r.author).toEqual('bot-aelesia-dev')
+		})
+	})
+
+	describe('reply search delete', () => {
+		let id: string = ''
+		test('Reply', async() => {
+			await reddit.reply(
+				't3_eaiqlw',
+				'[Jest Test: reply search delete] RedditAPI.test.ts')
+		})
+		test('Search', async() => {
+			let result = (await reddit.search_all('bot-aelesia-dev')).first()
+			expect(result.body).toEqual('[Jest Test: reply search delete] RedditAPI.test.ts')
+			id = result.id
+		})
+		test('Delete', async() => {
+			expect(id).not.toEqual('')
+			await reddit.delete(id)
+		})
+		test('Search post was deleted', async() => {
+			let results = (await reddit.search_all('bot-aelesia-dev'))
+			expect(results.some(it => {
+				return it.id === id
+			})).toEqual(false)
+		})
+	})
 })

@@ -10,5 +10,6 @@ module.exports = {
 	},
 	testRegex:
 		'(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-  testPathIgnorePatterns: ['/node_modules/','RedditAPI.test.ts']
+	// testPathIgnorePatterns: ['/node_modules/','RedditAPI.test.ts']
+	testPathIgnorePatterns: ['/node_modules/']
 }

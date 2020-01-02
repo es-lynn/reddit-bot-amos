@@ -4,8 +4,10 @@ import Http, {OAuth2Token} from '@aelesia/http'
 import {Kind, Post} from './types/Post.type'
 import {JQueryResponse, Token, TokenForm} from './types/RedditAPI.type'
 import {Me} from './types/Me.type'
-import {RedditAPIErr} from "./RedditAPIErr";
-import TooManyPosts = RedditAPIErr.PostLimit;
+import {RedditAPIErr} from './RedditAPIErr'
+import {NotImplementedError} from '../ext/Errors'
+import {Child, ChildData, Search} from './types/Search.type'
+import {map_search, map_t1, map_t3} from "./Map";
 
 type Credentials = {
 	user_agent: string,
@@ -39,19 +41,7 @@ export default class RedditAPI {
 			.get<Comments>())
 			.data
 
-		return data.data.children.map<Post>(it=>{
-			return {
-				id: `t1_${it.data.id}`,
-				author: it.data.author,
-				body: it.data.body,
-				date: it.data.created_utc,
-				kind: Kind.Comment,
-				parent_id: it.data.parent_id,
-				thread_id: it.data.link_id,
-				title: it.data.link_title,
-				url: `https://reddit.com${it.data.permalink}`
-			}
-		})
+		return data.data.children.map(map_t1)
 	}
 
 	async threads(subreddit: string): Promise<Post[]> {
@@ -60,21 +50,7 @@ export default class RedditAPI {
 			.get<Threads>())
 			.data
 
-		return data.data.children.map<Post>(it=>{
-			// HACK: AWS DyanmoDB cannot insert keys with empty values
-			//  Please fix AWS DynamoDB insert function instead!
-			return {
-				id: it.data.name,
-				author: it.data.author,
-				// body: it.data.selftext
-				body: it.data.selftext === '' ? '<empty>' : it.data.selftext,
-				date: it.data.created_utc,
-				kind: Kind.Thread,
-				thread_id: it.data.name,
-				title: it.data.title,
-				url: it.data.url,
-			}
-		})
+		return data.data.children.map(map_t3)
 	}
 
 	async reply(thing_id: string, text: string): Promise<void> {
@@ -91,10 +67,41 @@ export default class RedditAPI {
 		}
 	}
 
-	async me() :Promise<Me> {
+	async me(): Promise<Me> {
 		return (await this.oauth2
 			.url('https://oauth.reddit.com/api/v1/me')
 			.get<Me>())
 			.data
+	}
+
+	private async search(username: string, after?: string): Promise<Search> {
+		return (await Http
+			.url(`https://www.reddit.com/user/${username}.json?limit=100&after=${after??''}`)
+			.get<Search>())
+			.data
+	}
+
+	async search_all(username: string): Promise<Post[]> {
+
+		let data: Search | undefined
+		let all_posts: Post[] = []
+		do {
+			data = await this.search(username, data?.data.after ?? '')
+			let map = data.data.children.map(map_search)
+			all_posts = all_posts.concat(map)
+		} while (data.data.after)
+
+		return all_posts
+	}
+
+	async delete(id: string): Promise<void> {
+		let resp = (await this.oauth2
+			.url('https://oauth.reddit.com/api/del')
+			.body_forms({id})
+			.post())
+
+		if (resp.status !== 200) {
+			throw new RedditAPIErr.General(`${JSON.stringify(resp.data)}`)
+		}
 	}
 }

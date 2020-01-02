@@ -32,14 +32,16 @@ Utils:
 ~~- Split them up into Utils & prototypes~~
 ~~- Need a format class for strings, and dates~~
 ~~- Dynamic left/right padder?~~
-- Re-export everything
-- Scope things
-- Control global
+~~- Re-export everything~~
+~~- Scope things~~
+~~- Control global~~
 
 npm template
 npx template
 github actions
 
-Amos Yee thread
-- contains(Amos) && contains(Yee) && next to each other
-- amos && yee but not next to each other
+~~Amos Yee thread~~
+~~- contains(Amos) && contains(Yee) && next to each other~~
+~~- amos && yee but not next to each other~~
+~~website~~
+~~formatting~~
