@@ -7,7 +7,7 @@ import {Me} from './types/Me.type'
 import {RedditAPIErr} from './RedditAPIErr'
 import {NotImplementedError} from '../ext/Errors'
 import {Child, ChildData, Search} from './types/Search.type'
-import {map_search, map_t1, map_t3} from "./Map";
+import {map_search, map_t1, map_t3} from './Map'
 
 type Credentials = {
 	user_agent: string,

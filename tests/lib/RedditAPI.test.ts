@@ -89,12 +89,10 @@ describe('RedditAPI', () => {
 				't3_eaiqlw',
 				'[Jest Test: reply search delete] RedditAPI.test.ts')
 		})
-		test('Search', async() => {
+		test('Search & Delete', async() => {
 			let result = (await reddit.search_all('bot-aelesia-dev')).first()
 			expect(result.body).toEqual('[Jest Test: reply search delete] RedditAPI.test.ts')
 			id = result.id
-		})
-		test('Delete', async() => {
 			expect(id).not.toEqual('')
 			await reddit.delete(id)
 		})
