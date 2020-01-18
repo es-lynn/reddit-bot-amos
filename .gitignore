@@ -13,8 +13,6 @@ jspm_packages
 !jest.*.js
 
 .env.development
-.env.test
-.env.test
 .env.production
 
 .vscode
