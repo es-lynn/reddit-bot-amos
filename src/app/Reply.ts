@@ -14,7 +14,7 @@ export class Reply {
 		str += `**${Reply.pretty_time(DateUtil.elapsed(last_post.date, post.date))}** `
 		str += 'since we\'ve had an intellectual discussion about Amos Yee!\n\n'
 		str += `Last mentioned by ${last_post.author} `
-		str += `on **${DateUtil._f(post.date, 'DD MMMM YYYY')}**`
+		str += `on **${DateUtil._f(last_post.date, 'DD MMMM YYYY')}**`
 		str += `: [${last_post.title}](${last_post.url})\n\n`
 		str += '----------\n\n'
 		str += `v${Config.VERSION} | `

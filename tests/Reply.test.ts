@@ -5,16 +5,18 @@ import {DateUtil, StringUtil} from "@aelesia/commons";
 describe('Reply', () => {
 
 	test('Test view response', async () => {
+		console.log(DateUtil.to_date(1575227371))
+		console.log(DateUtil.to_date(1577732971))
 		console.log(Reply.reset_counter({
-			author: 'the_first_bugger',
-			date: 1575227371,
-			title: 'The Second Thread',
-			url: 'http://url.com'
-		} as any, {
 			author: 'the_second_bugger',
 			date: 1577732971,
 			title: 'The Second Thread',
-			url: 'http://url.com'
+			url: 'http://url.com/second'
+		} as any, {
+			author: 'the_first_bugger',
+			date: 1575227371,
+			title: 'The first Thread',
+			url: 'http://url.com/first'
 		} as any))
 	})
 
