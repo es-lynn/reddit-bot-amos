@@ -34,8 +34,8 @@ export function env_<T>() {
 export const Env = env_<{
   ENVIRONMENT: string
   SUBREDDIT: string
-  AWS_ACCESS_KEY_ID: string
-  AWS_SECRET_ACCESS_KEY: string
+  AWSC_ACCESS_KEY_ID: string
+  AWSC_SECRET_ACCESS_KEY: string
   AWSC_REGION: string
   MIXPANEL_TOKEN: string
   DB_DEL_POLICY: string
