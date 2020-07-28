@@ -1,18 +1,19 @@
 custom:
-  prefix: ${env:SERVICE}-${env:NODE_ENV}-
+  service: ${file(./package.json):name}
+  prefix: ${self:custom.service}-${env:ENVIRONMENT}-
   dotenv:
-    file: file(./.env.${self:provider.stage)
+    file: file(./.env)
     basePath: ./
 
-service: ${env:SERVICE}
-
+service: ${self:custom.service}
 provider:
   name: aws
-  runtime: nodejs8.10
-  region: ${env:AWS_REGION}
+  runtime: nodejs12.x
+  stage: ${env:ENVIRONMENT}
+  region: ${env:AWSC_REGION}
   timeout: 15
   environment:
-    STAGE: ${self:provider.stage}
+    SERVICE: ${self:custom.service}
 
   iamRoleStatements:
     - Effect: Allow
@@ -26,13 +27,13 @@ provider:
       Resource:
         - { Fn::GetAtt: ["${env:DB_POSTS}", 'Arn'] }
 
-#functions:
-#  - prices:
-#      handler: handler.hello_world
-#      events:
-#      - http:
-#          path: /hello_world
-#          method: get
+functions:
+  records:
+    handler: dist/handler._records
+    events:
+      - http:
+          path: /records
+          method: get
 
 resources:
   Resources:
@@ -49,25 +50,7 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
 
-#resources:
-#  Resources:
-#    tableName:
-#      Type: 'AWS::DynamoDB::Table'
-#      DeletionPolicy: ${env:DB_DEL_POLICY}
-#      Properties:
-#        TableName: ${self:custom.prefix}${env:DB_NAME}
-#        AttributeDefinitions:
-#          - AttributeName: id
-#            AttributeType: N
-#        KeySchema:
-#          - AttributeName: id
-#            KeyType: HASH
-#        BillingMode: PAY_PER_REQUEST
-
-
 plugins:
   - serverless-offline
   - serverless-dotenv-plugin
   - serverless-plugin-include-dependencies
-
-

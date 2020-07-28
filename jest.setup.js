@@ -1,6 +1,4 @@
-require('dotenv').config({ path: './.env.test' })
+require('dotenv').config({ path: './.env.testing' })
+require('@aelesia/commons-ext').extend.all()
 
-/* User configurations below */
 jest.setTimeout(20000)
-require('./lib/ext/prototype/Array')
-require('./lib/ext/prototype/String')

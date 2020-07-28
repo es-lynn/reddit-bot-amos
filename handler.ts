@@ -1,8 +1,7 @@
-import { APIGatewayProxyResult, Callback, Context, Handler } from 'aws-lambda'
+import { extend } from '@aelesia/commons-ext'
+import { LambdaAPI } from '@aelesia/commons/dist/src/aws/lambda/LambdaAPI'
+import * as lambda from './src/lambda/Lambda'
 
-export async function hello_world (event: any, context: Context) {
-	return {
-		statusCode: 200,
-		body: JSON.stringify({text:'Hello World'})
-	}
-}
+extend.all()
+
+export const _records = LambdaAPI(lambda.records)

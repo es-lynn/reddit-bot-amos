@@ -1,21 +1,25 @@
-require('./lib/ext/Array')
-require('./lib/ext/String')
-import {AmosBot} from './src/app/AmosBot'
-import {RedditAPIErr} from './lib/reddit_api/RedditAPIErr'
-import {Log} from './src/app/Spring'
+import { extend } from '@aelesia/commons-ext'
+import { Cfg } from './src/app/config/Cfg'
 import Filter from './src/util/Filter'
-import Config from './src/app/Configuration'
+import { AmosBot } from './src/app/AmosBot'
+import { RedditAPIErr } from 'reddit-ts'
+import { Log } from './src/app/spring/Log'
 
-(async()=>{
-	let bot = new AmosBot()
-	await bot.init()
-	setInterval(()=>{
-		bot.run().catch(e => {
-			if (e instanceof RedditAPIErr.General) Log.error('AmosBot', e).e()
-			else if (e instanceof Error) Log.fatal('AmosBot', e).e()
-			// FIXME: I don't like this
-			Filter.reset_cache()
-		})
-	}, Config.INTERVAL)
+extend.all()
+;(async () => {
+  let bot = new AmosBot()
+  await bot.init()
+  setInterval(() => {
+    bot.run().catch(e => {
+      if (e instanceof RedditAPIErr.ServerBusy) {
+        Log.warn('AmosBot', e).e()
+      } else if (e instanceof RedditAPIErr.General) {
+        Log.error('AmosBot', e).e()
+      } else if (e instanceof Error) {
+        Log.fatal('AmosBot', e).e()
+      }
+      // FIXME: I don't like this
+      Filter.reset_cache()
+    })
+  }, Cfg.INTERVAL)
 })()
-

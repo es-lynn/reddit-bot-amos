@@ -12,11 +12,11 @@ jspm_packages
 *.js
 !jest.*.js
 
-.env.development
-.env.production
+*.env
+/.env
 
-.vscode
-.idea
-
-package-lock.json
-.env.staging
+yarn-error.log
+dist
+coverage
+/db/
+tsconfig.tsbuildinfo
