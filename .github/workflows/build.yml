@@ -69,13 +69,17 @@ jobs:
 
       - run: npx cryptfile decrypt_all cfg=.cryptfile.cfg pw=${{ secrets.CRYPTFILE_PASSWORD }}
 
-      - run: NODE_ENV=testing yarn run serverless config credentials --provider aws --key ${{ secrets.AWS_DEPLOY_KEY }} --secret ${{ secrets.AWS_DEPLOY_SECRET }}
+      - run: |
+          mkdir ~/.aws
+          echo "[default]
+          aws_access_key_id=${{ secrets.AWS_DEPLOY_KEY }}
+          aws_secret_access_key=${{ secrets.AWS_DEPLOY_SECRET }}" >> ~/.aws/credentials
 
       - if: contains(github.ref, 'refs/heads/develop')
-        run: yarn run ENV=develop deploy_aws
+        run: ENV=develop yarn run deploy_aws
 
       - if: contains(github.ref, 'refs/heads/release')
-        run: yarn run ENV=staging deploy_aws
+        run: ENV=staging yarn run deploy_aws
 
       - if: contains(github.ref, 'refs/heads/master')
-        run: yarn run ENV=production deploy_aws
+        run: ENV=production yarn run deploy_aws

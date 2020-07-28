@@ -37,7 +37,7 @@ functions:
 
 resources:
   Resources:
-    tableName:
+    posts:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: ${env:DB_DEL_POLICY}
       Properties:
