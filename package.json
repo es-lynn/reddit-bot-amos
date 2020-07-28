@@ -1,7 +1,7 @@
 {
   "name": "reddit-bot-amos",
   "version": "2.0.0",
-  "description": "Scaffolding for a serverless typescript dotenv project",
+  "description": "Triggers whenever Amos Yee is mentioned",
   "main": "handler.js",
   "scripts": {
     "env": "npx @siliconjungles/rn-scripts replace_files path=env/${ENV}/.cfg.${ENV}",
@@ -18,7 +18,7 @@
     "lint_fix": "yarn lint --fix",
     "compile": "tsc && yarn lint"
   },
-  "author": "",
+  "author": "aelesia",
   "license": "MIT",
   "devDependencies": {
     "@siliconjungles/rn-scripts": "^0.0.0-42",
@@ -51,5 +51,5 @@
     "mixpanel": "^0.11.0",
     "reddit-ts": "1.0.1"
   },
-  "repository": ""
+  "repository": "https://github.com/aelesia/reddit-bot-amos"
 }
