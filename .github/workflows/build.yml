@@ -49,7 +49,7 @@ jobs:
       - run: yarn run test_coverage
 
   deploy_aws:
-    if: contains(github.ref, 'refs/heads/develop') || contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/heads/release')
+    if: contains(github.ref, 'refs/heads/develop') || contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/heads/release') || contains(github.ref, 'refs/heads/ci')
     needs: [compile,test_coverage]
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +75,7 @@ jobs:
           aws_access_key_id=${{ secrets.AWS_DEPLOY_KEY }}
           aws_secret_access_key=${{ secrets.AWS_DEPLOY_SECRET }}" >> ~/.aws/credentials
 
-      - if: contains(github.ref, 'refs/heads/develop')
+      - if: contains(github.ref, 'refs/heads/develop') || contains(github.ref, 'refs/heads/ci')
         run: ENV=develop yarn run deploy_aws
 
       - if: contains(github.ref, 'refs/heads/release')
