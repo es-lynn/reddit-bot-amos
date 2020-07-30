@@ -1,7 +1,7 @@
 {
   "name": "reddit-bot-amos",
   "version": "2.0.0",
-  "description": "Scaffolding for a serverless typescript dotenv project",
+  "description": "Triggers whenever Amos Yee is mentioned",
   "main": "handler.js",
   "scripts": {
     "env": "npx @siliconjungles/rn-scripts replace_files path=env/${ENV}/.cfg.${ENV}",
@@ -10,6 +10,8 @@
     "migrate": "yarn env && tsc && node -r dotenv/config dist/migrations/${FILE}.js",
     "index": "ENV=${ENV:-local} yarn env && tsc && yarn _index",
     "start": "ENV=${ENV:-local} yarn env && tsc && yarn _start",
+    "encrypt": "npx cryptfile encrypt_all cfg=.cryptfile.cfg pw=${PW}",
+    "decrypt": "npx cryptfile decrypt_all cfg=.cryptfile.cfg pw=${PW}",
     "deploy_aws": "yarn env && tsc && serverless deploy",
     "remove_aws": "yarn env && serverless remove",
     "test": "jest --setupFiles dotenv/config",
@@ -18,7 +20,7 @@
     "lint_fix": "yarn lint --fix",
     "compile": "tsc && yarn lint"
   },
-  "author": "",
+  "author": "aelesia",
   "license": "MIT",
   "devDependencies": {
     "@siliconjungles/rn-scripts": "^0.0.0-42",
@@ -29,6 +31,7 @@
     "@types/node": "^13.1.2",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.15.0",
+    "cryptfile": "^1.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -43,7 +46,7 @@
     "typescript": "^3.9.6"
   },
   "dependencies": {
-    "@aelesia/commons": "^0.4.0-next.30",
+    "@aelesia/commons": "^0.4.0-next.31",
     "@aelesia/commons-ext": "^0.4.0-next.11",
     "@aelesia/http": "^0.1.6",
     "aws-sdk": "^2.528.0",
@@ -51,5 +54,5 @@
     "mixpanel": "^0.11.0",
     "reddit-ts": "1.0.1"
   },
-  "repository": ""
+  "repository": "https://github.com/aelesia/reddit-bot-amos"
 }

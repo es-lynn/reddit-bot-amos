@@ -1,7 +1,7 @@
-import { extend } from '@aelesia/commons-ext'
-import { LambdaAPI } from '@aelesia/commons/dist/src/aws/lambda/LambdaAPI'
+import { LambdaAPI, LambdaConfig } from '@aelesia/commons/dist/src/aws/lambda/LambdaAPI'
 import * as lambda from './src/lambda/Lambda'
+import { Cfg } from './src/app/config/Cfg'
 
-extend.all()
+LambdaConfig.whitelist = Cfg.CORS_WHITELIST
 
 export const _records = LambdaAPI(lambda.records)

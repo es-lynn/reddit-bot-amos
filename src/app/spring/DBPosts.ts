@@ -14,8 +14,8 @@ export const DB_Posts = ((): NoSQLDatabase<Post> => {
     case 'local':
       return new FileSystemDatabase(Cfg.DB_POSTS)
     default:
-      AWS.config.secretAccessKey = Env('AWS_SECRET_ACCESS_KEY')
-      AWS.config.accessKeyId = Env('AWS_ACCESS_KEY_ID')
+      AWS.config.secretAccessKey = Env('AWSC_SECRET_ACCESS_KEY')
+      AWS.config.accessKeyId = Env('AWSC_ACCESS_KEY_ID')
       return new AwsDynamodb(Env('AWSC_REGION'), Cfg.DB_POSTS)
   }
 })()
