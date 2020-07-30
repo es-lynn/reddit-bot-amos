@@ -1916,6 +1916,14 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+cryptfile@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cryptfile/-/cryptfile-1.0.0.tgz#ba8a7e5ee97d76ee1737ac77e767bae9cc789f01"
+  integrity sha512-lVIweU3Ob7CKSEh7rWdsoG1fKeVU0q2KY9zaSEow2UmGdRcvoQDH330CIwe3zc8bgjSzQzVdeihOPQtmTCVW1Q==
+  dependencies:
+    "@aelesia/commons" "^0.0.3"
+    nodejs-shell "^0.3.4"
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -5041,6 +5049,13 @@ node-source-walk@^4.0.0, node-source-walk@^4.2.0:
   integrity sha512-hPs/QMe6zS94f5+jG3kk9E7TNm4P2SulrKiLWMzKszBfNZvL/V6wseHlTd7IvfW0NZWqPtK3+9yYNr+3USGteA==
   dependencies:
     "@babel/parser" "^7.0.0"
+
+nodejs-shell@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/nodejs-shell/-/nodejs-shell-0.3.4.tgz#9cae822898f1813026d45778dc0e2c4aea3e72e3"
+  integrity sha512-RPP+JhyWp80FrXwjZbqNeApql0fn/yPOcQ+ISnwO9kqitTSDEFRj+Rk95+CqFo7IApieEWFVfySblftHsUGF2Q==
+  dependencies:
+    "@aelesia/commons" "^0.0.3"
 
 nofilter@^1.0.3:
   version "1.0.3"
