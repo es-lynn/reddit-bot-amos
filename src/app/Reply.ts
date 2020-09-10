@@ -10,7 +10,7 @@ export class Reply {
     str += '🎉 **RESET THE COUNTER!!!** 🎉\n\n'
     str += 'It has been '
     str += `_${Reply.adjective()}_ `
-    str += `**${Reply.pretty_time(_.time.elapsed(last_post.date, post.date))}** `
+    str += `[**${Reply.pretty_time(_.time.elapsed(last_post.date, post.date))}**](${Cfg.COUNTER_URL}) `
     str += "since we've had an intellectual discussion about Amos Yee!\n\n"
     str += `Last mentioned by ${last_post.author} `
     str += `on **${_.date._f(last_post.date, 'DD MMMM YYYY')}**`
