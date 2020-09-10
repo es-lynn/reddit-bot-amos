@@ -6,6 +6,7 @@ import { Post } from '../db/model/Post'
 import { Reddit } from './spring/RedditAPI'
 import { DB_Posts } from './spring/DBPosts'
 import { Log } from './spring/Log'
+import { Heartbeat } from './spring/Heartbeat'
 
 export class AmosBot {
   historic_posts: Post[] = null as any
@@ -37,6 +38,7 @@ export class AmosBot {
         }
       }
     }
+    Heartbeat.send()
   }
 
   async retrieve_posts(): Promise<Post[]> {
