@@ -1,4 +1,4 @@
-import { Log, Logger, LogLevel, LogStream } from '../Logger'
+import { Log, LogLevel, LogStream } from '../Logger'
 import express from 'express'
 
 interface Config {
@@ -20,7 +20,7 @@ export class ExpressJS implements LogStream {
     })
   }
 
-  send(log: Log) {
+  send(log: Log): void {
     this.logs.push(ExpressJS._s(log))
     if (this.logs.length > this.config.max) {
       this.logs.shift()

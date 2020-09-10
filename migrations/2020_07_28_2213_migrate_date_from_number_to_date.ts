@@ -1,5 +1,5 @@
 import { DB_Posts } from '../src/app/spring/DBPosts'
-;(async () => {
+;(async (): Promise<void> => {
   const posts = await DB_Posts.scan()
   posts.forEach(it => {
     const date = it.date

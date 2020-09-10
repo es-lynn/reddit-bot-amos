@@ -22,7 +22,7 @@ export class ExpressJSMetrics implements TimingStream {
     })
   }
 
-  send(id: string, metrics: Metric[]) {
+  send(id: string, metrics: Metric[]): void {
     let obj = this.metrics[id]
     if (!obj) {
       this.metrics[id] = {}

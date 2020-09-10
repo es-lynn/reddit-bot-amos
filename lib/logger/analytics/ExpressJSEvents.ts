@@ -1,4 +1,4 @@
-import { ErrorStream, EventStream, Log, Logger, LogLevel, LogStream } from '../Logger'
+import { ErrorStream, EventStream } from '../Logger'
 import express from 'express'
 
 interface Config {
