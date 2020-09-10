@@ -18,10 +18,11 @@ export class AmosBot {
   }
 
   async run(): Promise<void> {
-    let posts = await this.retrieve_posts()
-    for (const it of posts) {
-      if (Logic.is_amos_yee_post(it) && Logic.is_new_amos_thread(it, this.historic_posts)) {
-        await this.onAmosYeePost(it)
+    const posts = await this.retrieve_posts()
+    const filtered = posts.filter(Filter.rm_ignored_users)
+    for (const post of filtered) {
+      if (Logic.is_amos_yee_post(post) && Logic.is_new_amos_thread(post, this.historic_posts)) {
+        await this.onAmosYeePost(post)
       }
     }
   }

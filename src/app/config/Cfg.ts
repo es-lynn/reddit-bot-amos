@@ -9,6 +9,7 @@ export const Cfg = new (class {
 
   INTERVAL = Time.secs(15)
   SUBREDDIT = Env('SUBREDDIT')
+  IGNORE_BLACKLIST = EnvJSON('IGNORE_BLACKLIST')
 
   DB_POSTS = envAWSResource('DB_POSTS')
 
