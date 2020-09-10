@@ -36,6 +36,14 @@ class Filter {
     return true
   }
 
+  rm_ignored_users(post: Post): boolean {
+    if (Cfg.IGNORE_BLACKLIST.includes(post.author)) {
+      Log.info('filter.ignored_user', { user: post.author })
+      return false
+    }
+    return true
+  }
+
   rm_responded_posts(posts: Post[]): Post[] {
     let self_posts = posts
       .filter(it => {

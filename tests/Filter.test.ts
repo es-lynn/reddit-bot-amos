@@ -17,6 +17,24 @@ describe('Filter', () => {
     expect(filtered.length).toEqual(3)
   })
 
+  describe('Remove ignored users', () => {
+    test('removes users in blacklist', async () => {
+      Cfg.IGNORE_BLACKLIST = ['ignore_me_pl0x']
+      let posts: Post[] = [{ author: 'ignore_me_pl0x' }, { author: 'me' }, { author: 'you' }] as any
+      let filtered = posts.filter(Filter.rm_ignored_users)
+      expect(posts.length).toEqual(3)
+      expect(filtered.length).toEqual(2)
+    })
+
+    test('does not remove if name is contained', async () => {
+      Cfg.IGNORE_BLACKLIST = ['ignore_me_pl0x']
+      let posts: Post[] = [{ author: 'ignore_me_pl0xxy' }, { author: 'me' }, { author: 'you' }] as any
+      let filtered = posts.filter(Filter.rm_ignored_users)
+      expect(posts.length).toEqual(3)
+      expect(filtered.length).toEqual(3)
+    })
+  })
+
   test('Responded', async () => {
     let posts: Post[] = [{ id: 'id1' }, { id: 'id2' }, { id: 'id3', author: Cfg.REDDIT_SELF, parent_id: 'id2' }] as any
     let filtered = Filter.rm_responded_posts(posts)
