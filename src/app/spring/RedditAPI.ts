@@ -1,4 +1,4 @@
-import RedditAPI from 'reddit-ts/src/RedditAPI'
+import RedditAPI from 'reddit-ts'
 import { Cfg } from '../config/Cfg'
 import { Env } from '../config/Env'
 
