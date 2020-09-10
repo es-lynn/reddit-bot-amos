@@ -2,7 +2,7 @@ import { Log, LogLevel, LogStream } from '../Logger'
 import chalk, { Chalk } from 'chalk'
 
 export class ConsoleStream implements LogStream {
-  send(log: Log) {
+  send(log: Log): void {
     switch (log.level) {
       case LogLevel.TRACE:
         console.debug(ConsoleStream._s(log))

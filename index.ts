@@ -6,7 +6,7 @@ import { RedditAPIErr } from 'reddit-ts'
 import { Log } from './src/app/spring/Log'
 
 extend.all()
-;(async () => {
+;(async (): Promise<void> => {
   let bot = new AmosBot()
   await bot.init()
   setInterval(() => {

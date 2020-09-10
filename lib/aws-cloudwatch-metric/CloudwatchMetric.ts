@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk'
 import { CloudWatch } from 'aws-sdk'
-import { Dimension, MetricData, MetricDatum, StandardUnit } from 'aws-sdk/clients/cloudwatch'
+import { Dimension, MetricDatum, StandardUnit } from 'aws-sdk/clients/cloudwatch'
 
 export interface Metric {
   name: string
@@ -32,7 +32,7 @@ export class CloudwatchMetric {
     }
 
     return new Promise((resolve, reject) => {
-      this.cw.putMetricData(params, (err, data) => {
+      this.cw.putMetricData(params, (err, _data) => {
         if (err) {
           reject(err)
         } else resolve()

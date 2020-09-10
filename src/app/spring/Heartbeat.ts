@@ -12,7 +12,7 @@ class _Heartbeat implements Send {
   constructor(metric: AWSMetrics) {
     this.metric = metric
   }
-  async send() {
+  async send(): Promise<void> {
     await this.metric.send('bot.run', [
       {
         name: 'Heartbeat',
@@ -27,11 +27,14 @@ export const Heartbeat = ((): Send => {
   switch (Cfg.ENVIRONMENT) {
     case 'test':
       return {
-        send: () => {}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        send: (): void => {}
       }
     case 'local':
       return {
-        send: () => Log.info('heartbeat', '')
+        send: (): void => {
+          Log.info('heartbeat', '')
+        }
       }
     default:
       AWS.config.secretAccessKey = Env('AWSC_SECRET_ACCESS_KEY')
