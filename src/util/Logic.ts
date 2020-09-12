@@ -1,6 +1,7 @@
 import { Post } from '../db/model/Post'
-import { Err } from '@aelesia/commons'
+import { Err, Format } from '@aelesia/commons'
 import { Log } from '../app/spring/Log'
+import { Cfg } from '../app/config/Cfg'
 
 export default class Logic {
   static is_amos_yee_comment(comment: Post): boolean {
@@ -50,5 +51,17 @@ export default class Logic {
     }
     Log.info('is_old_amos_thread', { id: post.id, title: post.title })
     return false
+  }
+
+  static is_not_spam_post(post: Post, last_post: Post): boolean {
+    if (last_post.author === post.author && last_post.date.timeSince() < Cfg.COOLDOWN_SPAM_TIME) {
+      Log.info('is_spam_post', {
+        id: post.id,
+        author: post.author,
+        time_ago: Format.timeAgo() last_post.date.timeSince()
+      })
+      return false
+    }
+    return true
   }
 }

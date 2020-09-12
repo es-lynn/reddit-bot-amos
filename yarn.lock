@@ -29,10 +29,10 @@
   dependencies:
     dayjs "^1.8.18"
 
-"@aelesia/commons@^0.4.0-next.31":
-  version "0.4.0-next.31"
-  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.4.0-next.31.tgz#60811f3f232dd95255a9e589a4d9d5785ab89f26"
-  integrity sha512-ffLOzishbdco3H8ex7kfPd08Qa7NQqil39/YyHSojd4olDqTFeChQOkhLa7/p5Q8n5a5QVMPZ4PgqwUkB0mrgQ==
+"@aelesia/commons@^0.4.0-next.36":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.4.0.tgz#d958497fa2f107e440e3108e1a2e855c6769dc61"
+  integrity sha512-anTKVSI3lwIw5sYo2YTzC1PFCB9/2RK7ol/6KvMKOshtl6rLAj1gLsIKrhdgvgHcS+BtZ5ROBPH5lFWp5/lUGA==
   dependencies:
     dayjs "^1.8.28"
 
