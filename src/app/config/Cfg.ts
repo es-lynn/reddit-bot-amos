@@ -8,6 +8,7 @@ export const Cfg = new (class {
   VERSION = Pkg.version
 
   INTERVAL = Time.secs(15)
+  COOLDOWN_SPAM_TIME = Time.secs(EnvJSON('COOLDOWN_SPAM_SECS'))
   SUBREDDIT = Env('SUBREDDIT')
   IGNORE_BLACKLIST = EnvJSON('IGNORE_BLACKLIST')
   COUNTER_URL = 'https://amosyeecounter.netlify.app/'

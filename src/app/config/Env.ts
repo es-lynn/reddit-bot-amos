@@ -51,6 +51,7 @@ export const EnvJSON: <K extends keyof EnvType>(key: K) => EnvType[K] = env
 type EnvType = {
   ENVIRONMENT: 'test' | 'local' | 'develop' | 'staging' | 'production' | string
   SUBREDDIT: string
+  COOLDOWN_SPAM_SECS: number
   IGNORE_BLACKLIST: string[]
   AWSC_ACCESS_KEY_ID: string
   AWSC_SECRET_ACCESS_KEY: string

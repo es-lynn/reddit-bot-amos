@@ -1,4 +1,9 @@
 import Logic from '../src/util/Logic'
+import { DateUtil } from '@aelesia/commons/dist/src/collections/util/DateUtil'
+import { Post } from '../src/db/model/Post'
+import { Cfg } from '../src/app/config/Cfg'
+import { FakerFactory, Time } from '@aelesia/commons'
+import { PostFactory } from './factories/Factories'
 
 describe('Logic', () => {
   test('Title contains "Amos"', async () => {
@@ -92,5 +97,54 @@ describe('Logic', () => {
         body: 'we need to do something about famous amos. their employees are paid too much.'
       } as any)
     ).toEqual(false)
+  })
+
+  describe('Spam posts', () => {
+    Cfg.COOLDOWN_SPAM_TIME = Time.secs(60)
+
+    test('Is spam post', async () => {
+      expect(
+        Logic.is_not_spam_post(
+          PostFactory.new({
+            author: 'spam_user',
+            date: DateUtil.now()
+          }),
+          PostFactory.new({
+            author: 'spam_user',
+            date: DateUtil.now().minus(Time.secs(30))
+          })
+        )
+      ).toEqual(false)
+    })
+
+    test('Is not spam post (different author)', async () => {
+      expect(
+        Logic.is_not_spam_post(
+          PostFactory.new({
+            author: 'spam_user',
+            date: DateUtil.now()
+          }),
+          PostFactory.new({
+            author: 'not_a_spam_user',
+            date: DateUtil.now().minus(Time.secs(30))
+          })
+        )
+      ).toEqual(true)
+    })
+
+    test('Is not spam post (past cooldown)', async () => {
+      expect(
+        Logic.is_not_spam_post(
+          PostFactory.new({
+            author: 'spam_user',
+            date: DateUtil.now()
+          }),
+          PostFactory.new({
+            author: 'spam_user',
+            date: DateUtil.now().minus(Time.secs(61))
+          })
+        )
+      ).toEqual(true)
+    })
   })
 })
