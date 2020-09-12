@@ -15,6 +15,13 @@
   resolved "https://registry.yarnpkg.com/@aelesia/commons-ext/-/commons-ext-0.4.0-next.11.tgz#0408c0e80d37a811c8a50c9ef62f7157da0af24c"
   integrity sha512-1kgHkX6F2SC/xacqDIbTrd8GcY491rOUde9+Z/SlV0HBDtbHkTxizjltWPRRUPtKqwmHu/BejxY95r8A4aPndA==
 
+"@aelesia/commons@0.5.0":
+  version "0.5.0-next.38"
+  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.5.0-next.38.tgz#a978d2f774da3f770d66f29e57e1e13fb7b5db46"
+  integrity sha512-3uTMCIEeqZey4IkehP0M3vUIyEp8+sRooJC3HNdQtIXY2CSLHe5xySOZXArs2Zsc87o8LuBYXfYUQWYdmXkisg==
+  dependencies:
+    dayjs "^1.8.28"
+
 "@aelesia/commons@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.0.2.tgz#6ddb8d3a459255af2c9e70f13c7922df29a9d87b"
@@ -28,13 +35,6 @@
   integrity sha512-H16sSWQfMWeA3sfXZ0yh+652FM5OT9QdOeCHgPK5YaHXAwq8mL0lh10HU4OoaHS4Uv948yfRgRMSfM+ACTHDeA==
   dependencies:
     dayjs "^1.8.18"
-
-"@aelesia/commons@^0.4.0-next.36":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.4.0.tgz#d958497fa2f107e440e3108e1a2e855c6769dc61"
-  integrity sha512-anTKVSI3lwIw5sYo2YTzC1PFCB9/2RK7ol/6KvMKOshtl6rLAj1gLsIKrhdgvgHcS+BtZ5ROBPH5lFWp5/lUGA==
-  dependencies:
-    dayjs "^1.8.28"
 
 "@aelesia/http@^0.1.6":
   version "0.1.6"

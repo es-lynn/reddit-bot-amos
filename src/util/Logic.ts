@@ -58,7 +58,7 @@ export default class Logic {
       Log.info('is_spam_post', {
         id: post.id,
         author: post.author,
-        time_ago: Format.timeAgo() last_post.date.timeSince()
+        cooldown_time: `${Format.timeAgo(last_post.date.timeSince())} / ${Format.timeAgo(Cfg.COOLDOWN_SPAM_TIME)}`
       })
       return false
     }
