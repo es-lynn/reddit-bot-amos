@@ -2,6 +2,7 @@ import { Post } from '../db/model/Post'
 import { Err, Format } from '@aelesia/commons'
 import { Log } from '../app/spring/Log'
 import { Cfg } from '../app/config/Cfg'
+import { bool } from 'aws-sdk/clients/signer'
 
 export default class Logic {
   static is_amos_yee_comment(comment: Post): boolean {
@@ -63,5 +64,13 @@ export default class Logic {
       return false
     }
     return true
+  }
+
+  static is_summoning_bot(post: Post): boolean {
+    if (post.body.includes(`/u/${Cfg.REDDIT_SELF}`)) {
+      Log.info('is_summoning_bot', { post_id: post.id, user: post.author })
+      return true
+    }
+    return false
   }
 }
