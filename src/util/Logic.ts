@@ -2,7 +2,6 @@ import { Post } from '../db/model/Post'
 import { Err, Format } from '@aelesia/commons'
 import { Log } from '../app/spring/Log'
 import { Cfg } from '../app/config/Cfg'
-import { bool } from 'aws-sdk/clients/signer'
 
 export default class Logic {
   static is_amos_yee_comment(comment: Post): boolean {
