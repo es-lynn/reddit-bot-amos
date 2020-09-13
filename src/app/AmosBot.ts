@@ -41,6 +41,8 @@ export class AmosBot {
         } else if (post.body.includes('!untag')) {
           await this.onUntag(post)
         }
+      } else if (Logic.contains_amos(post.body)) {
+        await Reddit.compose(Cfg.NOTIFY_USER, 'Contains Amos', post.url)
       }
     }
     Heartbeat.send()
@@ -69,10 +71,11 @@ export class AmosBot {
       Log.info('reset_counter', { user: post.author, thing_id: post.id }).count()
 
       let text = Reply.reset_counter(post, this.historic_posts.last())
-      await Reddit.reply(post.id, text)
-
       this.historic_posts.push(post)
       await DB_Posts.insert(post)
+
+      await Reddit.reply(post.id, text)
+      await Reddit.compose(Cfg.NOTIFY_USER, 'Reset Counter', post.url)
     }
   }
 
@@ -83,7 +86,7 @@ export class AmosBot {
     if (user.total_karma > Cfg.TAG_MIN_KARMA) {
       Log.info('tag', `${post.author} has tagged ${post.parent_id}`)
       const tagged_post = await Reddit.post(post.parent_id)
-      this.onAmosYeePost(tagged_post)
+      await this.onAmosYeePost(tagged_post)
     } else {
       Log.warn('onTag', `${user.name} does not have enough karma to tag.`)
       await Reddit.reply(post.id, `Sorry you need a minimum of ${Cfg.TAG_MIN_KARMA} karma to tag someone`)

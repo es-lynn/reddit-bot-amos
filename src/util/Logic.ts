@@ -57,6 +57,10 @@ export default class Logic {
     return text.toLowerCase().includes('polocle')
   }
 
+  static contains_amos(text: string): boolean {
+    return text.toLowerCase().includes('amos')
+  }
+
   static is_amos_yee_post(post: Post): boolean {
     switch (post.kind) {
       case 't3':

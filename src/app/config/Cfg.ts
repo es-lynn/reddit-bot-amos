@@ -12,6 +12,7 @@ export const Cfg = new (class {
   SUBREDDIT = Env('SUBREDDIT')
   IGNORE_BLACKLIST = EnvJSON('IGNORE_BLACKLIST')
   ADMIN_WHITELIST = ['aelesia-']
+  NOTIFY_USER = 'aelesia-'
   COUNTER_URL = 'https://amosyeecounter.netlify.app/'
   TAG_MIN_KARMA = 1000
 
