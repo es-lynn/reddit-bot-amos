@@ -223,5 +223,6 @@ describe('Logic', () => {
     ).toBeTruthy()
     expect(Logic.contains_amos_a_y_yee('AY')).toBeFalsy()
     expect(Logic.contains_amos_a_y_yee('A.Y')).toBeTruthy()
+    expect(Logic.contains_amos_a_y_yee('A*** Y**')).toBeTruthy()
   })
 })
