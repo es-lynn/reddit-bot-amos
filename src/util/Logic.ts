@@ -5,7 +5,12 @@ import { Cfg } from '../app/config/Cfg'
 
 export default class Logic {
   static is_amos_yee_comment(comment: Post): boolean {
-    if (this.contains_amos_yee_beside(comment.body) || this.contains_amos_and_yee_exact(comment.body)) {
+    if (
+      this.contains_amos_yee_beside(comment.body) ||
+      this.contains_amos_and_yee_exact(comment.body) ||
+      this.contains_polocle(comment.body) ||
+      this.contains_amos_a_y_yee(comment.body)
+    ) {
       Log.info('is_amos_yee_comment', comment.id)
       return true
     }
@@ -16,7 +21,10 @@ export default class Logic {
     if (
       this.contains_amos_yee_beside(thread.body) ||
       this.contains_amos_and_yee_exact(thread.body) ||
-      thread.title.toLowerCase().includes('amos')
+      thread.title.toLowerCase().includes('amos') ||
+      thread.title.toLowerCase().includes('polocle') ||
+      this.contains_polocle(thread.body) ||
+      this.contains_amos_a_y_yee(thread.body)
     ) {
       Log.info('is_amos_yee_thread', thread.id)
       return true
@@ -28,8 +36,25 @@ export default class Logic {
     return /\w*amos\w*[ ,.]*\w*yee\w*/g.test(text.toLowerCase())
   }
 
+  // FIXME: This is duplicated by `contains_amos_a_y_yee`
   static contains_amos_and_yee_exact(text: string): boolean {
     return /\bamos\b/g.test(text.toLowerCase()) && /\byee\b/g.test(text.toLowerCase())
+  }
+
+  static contains_amos_a_y_yee(text: string): boolean {
+    const lowerText = text.toLowerCase()
+    const yee = /(\b|_)yee(\b|_)/g.test(lowerText)
+    const amos = /(\b|_)amos(\b|_)/g.test(lowerText)
+    const y = /(\b|_)y(\b|_)/g.test(lowerText)
+    const a = /(\b|_)A(\b|_)/g.test(text)
+    if ((amos && y) || (a && yee) || (a && y)) {
+      return true
+    }
+    return false
+  }
+
+  static contains_polocle(text: string): boolean {
+    return text.toLowerCase().includes('polocle')
   }
 
   static is_amos_yee_post(post: Post): boolean {

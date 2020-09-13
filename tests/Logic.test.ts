@@ -14,6 +14,15 @@ describe('Logic', () => {
     ).toEqual(true)
   })
 
+  test('Title contains Amos Yee', async () => {
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'Remember When Amos Yee Used to Be Cute?',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(true)
+  })
+
   test('Thread body contains "Amos Yee"', async () => {
     expect(
       Logic.is_amos_yee_thread({
@@ -167,5 +176,52 @@ describe('Logic', () => {
         })
       )
     ).toEqual(false)
+  })
+
+  test('Title contains Polocle', async () => {
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'today i saw polocle get beaten up',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(true)
+  })
+
+  test('Title contains Polocle (case insensitive)', async () => {
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'today i saw pOLocLe get beaten up',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(true)
+  })
+
+  test('Thread contains Polocle', async () => {
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'today i saw someone get beaten up',
+        body: 'some selftextpolocle'
+      } as any)
+    ).toEqual(true)
+  })
+
+  test('Comment contains Polocle', async () => {
+    expect(
+      Logic.is_amos_yee_comment({
+        body: 'we need to do something about polocle. their employees are paid too much.'
+      } as any)
+    ).toEqual(true)
+  })
+
+  test('contains_amos_a_y_yee', () => {
+    expect(Logic.contains_amos_a_y_yee("You'll never be as useless and unsuccessful as a certain A.YEE")).toBeTruthy()
+    expect(Logic.contains_amos_a_y_yee('y_amos = y_amos += x_amos')).toBeTruthy()
+    expect(
+      Logic.contains_amos_a_y_yee(
+        'Is this what Amos Y- (ok I can hear the bot making angry noises) would have become if he had been given an elite education?'
+      )
+    ).toBeTruthy()
+    expect(Logic.contains_amos_a_y_yee('AY')).toBeFalsy()
+    expect(Logic.contains_amos_a_y_yee('A.Y')).toBeTruthy()
   })
 })
