@@ -15,13 +15,6 @@
   resolved "https://registry.yarnpkg.com/@aelesia/commons-ext/-/commons-ext-0.4.0-next.11.tgz#0408c0e80d37a811c8a50c9ef62f7157da0af24c"
   integrity sha512-1kgHkX6F2SC/xacqDIbTrd8GcY491rOUde9+Z/SlV0HBDtbHkTxizjltWPRRUPtKqwmHu/BejxY95r8A4aPndA==
 
-"@aelesia/commons@0.5.0":
-  version "0.5.0-next.38"
-  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.5.0-next.38.tgz#a978d2f774da3f770d66f29e57e1e13fb7b5db46"
-  integrity sha512-3uTMCIEeqZey4IkehP0M3vUIyEp8+sRooJC3HNdQtIXY2CSLHe5xySOZXArs2Zsc87o8LuBYXfYUQWYdmXkisg==
-  dependencies:
-    dayjs "^1.8.28"
-
 "@aelesia/commons@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.0.2.tgz#6ddb8d3a459255af2c9e70f13c7922df29a9d87b"
@@ -35,6 +28,15 @@
   integrity sha512-H16sSWQfMWeA3sfXZ0yh+652FM5OT9QdOeCHgPK5YaHXAwq8mL0lh10HU4OoaHS4Uv948yfRgRMSfM+ACTHDeA==
   dependencies:
     dayjs "^1.8.18"
+
+"@aelesia/commons@^0.5.0-next.40":
+  version "0.5.0-next.40"
+  resolved "https://registry.yarnpkg.com/@aelesia/commons/-/commons-0.5.0-next.40.tgz#d6d9f3a23675de20764f8aed994deed2b2ef6528"
+  integrity sha512-2hw4+Pxsekr7vn5Zngw23o1t0WX4T2qkfp+ZgH/VtV33gK+O0zz9AV2e2mUH0gOSXhUjpfavvpXnI7kDlb0qiQ==
+  dependencies:
+    "@types/lodash" "^4.14.161"
+    dayjs "^1.8.28"
+    lodash "^4.17.20"
 
 "@aelesia/http@^0.1.6":
   version "0.1.6"
@@ -859,6 +861,11 @@
   version "4.14.149"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
+
+"@types/lodash@^4.14.161":
+  version "4.14.161"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
+  integrity sha512-EP6O3Jkr7bXvZZSZYlsgt5DIjiGr0dXP1/jVEwVLTFgg0d+3lWVQkRavYVQszV7dYUwvg0B8R0MBDpcmXg7XIA==
 
 "@types/mime@*":
   version "2.0.1"
@@ -4644,6 +4651,11 @@ lodash@4.17.x, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.1
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+lodash@^4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
 loose-envify@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -5752,12 +5764,12 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reddit-ts@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/reddit-ts/-/reddit-ts-1.0.1.tgz#d94c55fad53000f9795d2ad97ca734f0ecfc78d7"
-  integrity sha512-ynWM+s1PJ9brI74QXoohUsnPDPGFecpz6axoIRM1Q/pl+v3SXOh1NQh64+/FTJmlRQ+hd3a/YsdZw+spWNZMWw==
+reddit-ts@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/reddit-ts/-/reddit-ts-1.1.0.tgz#6cd9aa1076fd09a0c9db93385231f76374903981"
+  integrity sha512-ryZPMyLmSq2LmfUmpDLM4DPoG/2fhLjnU59GMFothNqkI0Uyqnbgjhz5vWjpaX1X2FiZ9y+ffXskA6U6+DkGkA==
   dependencies:
-    "@aelesia/commons" "^0.0.3"
+    "@aelesia/commons" "^0.5.0-next.40"
     dotenv "^8.2.0"
     httyp "^0.1.7"
 

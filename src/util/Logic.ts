@@ -64,4 +64,12 @@ export default class Logic {
     }
     return true
   }
+
+  static is_summoning_bot(post: Post): boolean {
+    if (post.body.includes(`/u/${Cfg.REDDIT_SELF}`)) {
+      Log.info('is_summoning_bot', { post_id: post.id, user: post.author })
+      return true
+    }
+    return false
+  }
 }

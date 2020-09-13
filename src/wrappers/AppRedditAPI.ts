@@ -1,6 +1,6 @@
 import { Log } from '../app/spring/Log'
 import RedditAPI from 'reddit-ts'
-import { Post } from 'reddit-ts/src/types/Post.type'
+import { Post } from 'reddit-ts/src/types/models/Post.type'
 
 export class AppRedditAPI extends RedditAPI {
   async threads(subreddit: string): Promise<Post[]> {

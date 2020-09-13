@@ -1,8 +1,7 @@
 import Logic from '../src/util/Logic'
 import { DateUtil } from '@aelesia/commons/dist/src/collections/util/DateUtil'
-import { Post } from '../src/db/model/Post'
 import { Cfg } from '../src/app/config/Cfg'
-import { FakerFactory, Time } from '@aelesia/commons'
+import { Time } from '@aelesia/commons'
 import { PostFactory } from './factories/Factories'
 
 describe('Logic', () => {
@@ -146,5 +145,27 @@ describe('Logic', () => {
         )
       ).toEqual(true)
     })
+  })
+
+  test('Is summoning bot', () => {
+    Cfg.REDDIT_SELF = 'username'
+    expect(
+      Logic.is_summoning_bot(
+        PostFactory.new({
+          body: `something /u/${Cfg.REDDIT_SELF} something`
+        })
+      )
+    ).toEqual(true)
+  })
+
+  test('Is summoning bot #2', () => {
+    Cfg.REDDIT_SELF = 'username'
+    expect(
+      Logic.is_summoning_bot(
+        PostFactory.new({
+          body: `something ${Cfg.REDDIT_SELF} something`
+        })
+      )
+    ).toEqual(false)
   })
 })

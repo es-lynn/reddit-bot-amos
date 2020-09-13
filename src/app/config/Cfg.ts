@@ -11,7 +11,9 @@ export const Cfg = new (class {
   COOLDOWN_SPAM_TIME = Time.secs(EnvJSON('COOLDOWN_SPAM_SECS'))
   SUBREDDIT = Env('SUBREDDIT')
   IGNORE_BLACKLIST = EnvJSON('IGNORE_BLACKLIST')
+  ADMIN_WHITELIST = ['aelesia-']
   COUNTER_URL = 'https://amosyeecounter.netlify.app/'
+  TAG_MIN_KARMA = 1000
 
   DB_POSTS = envAWSResource('DB_POSTS')
 

@@ -16,9 +16,9 @@ export class Reply {
     str += `on **${_.date._f(last_post.date, 'DD MMMM YYYY')}**`
     str += `: [${last_post.title}](${last_post.url})\n\n`
     str += '----------\n\n'
-    str += `v${Cfg.VERSION} | `
-    str += `[${Cfg.SERVICE}](https://github.com/aelesia/reddit-bot-amos) `
-    str += 'by [aelesia](https://aelesia.github.io/)'
+    str += `[v${Cfg.VERSION}](https://github.com/aelesia/reddit-bot-amos) `
+    str += 'by [aelesia](https://aelesia.github.io/) | '
+    str += `Type \`/u/${Cfg.REDDIT_SELF} !tag\` if I missed a post`
     return str
   }
 
