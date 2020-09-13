@@ -41,6 +41,8 @@ export class AmosBot {
         } else if (post.body.includes('!untag')) {
           await this.onUntag(post)
         }
+      } else if (Logic.contains_amos(post.body)) {
+        await Reddit.compose(Cfg.NOTIFY_USER, 'Contains Amos', post.url)
       }
     }
     Heartbeat.send()
@@ -73,6 +75,7 @@ export class AmosBot {
 
       this.historic_posts.push(post)
       await DB_Posts.insert(post)
+      await Reddit.compose(Cfg.NOTIFY_USER, 'Reset Counter', post.url)
     }
   }
 
