@@ -32,9 +32,7 @@ export const Heartbeat = ((): Send => {
       }
     case 'local':
       return {
-        send: (): void => {
-          Log.info('heartbeat', '')
-        }
+        send: (): void => {}
       }
     default:
       AWS.config.secretAccessKey = Env('AWSC_SECRET_ACCESS_KEY')
