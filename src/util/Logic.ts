@@ -47,7 +47,7 @@ export default class Logic {
     const amos = /(\b|_)amos(\b|_)/g.test(lowerText)
     const y = /(\b|_)y(\b|_)/g.test(lowerText)
     const a = /(\b|_)A(\b|_)/g.test(text)
-    if ((amos && y) || (a && yee) || (a && y)) {
+    if ((amos && y) || (a && yee)) {
       return true
     }
     return false

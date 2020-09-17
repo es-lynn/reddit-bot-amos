@@ -3,6 +3,7 @@ import { DateUtil } from '@aelesia/commons/dist/src/collections/util/DateUtil'
 import { Cfg } from '../src/app/config/Cfg'
 import { Time } from '@aelesia/commons'
 import { PostFactory } from './factories/Factories'
+import { Post } from '../src/db/model/Post'
 
 describe('Logic', () => {
   test('Title contains "Amos"', async () => {
@@ -222,7 +223,17 @@ describe('Logic', () => {
       )
     ).toBeTruthy()
     expect(Logic.contains_amos_a_y_yee('AY')).toBeFalsy()
-    expect(Logic.contains_amos_a_y_yee('A.Y')).toBeTruthy()
-    expect(Logic.contains_amos_a_y_yee('A*** Y**')).toBeTruthy()
+    expect(Logic.contains_amos_a_y_yee('A.Y')).toBeFalsy()
+    expect(Logic.contains_amos_a_y_yee('A*** Y**')).toBeFalsy()
+  })
+
+  test('', () => {
+    expect(
+      Logic.is_amos_yee_comment({
+        body:
+          'Now, before you label me as a "feminist" or "SJW", hear me out. Warning though, relatively long post ahead. Might be rant-y in nature.\n' +
+          "A Reddit post over Shaun Ho's case can be found here: NTU undergraduate admits to taking illicit videos of 335 women, including victims on campus\n"
+      } as Post)
+    ).toBeFalsy()
   })
 })
