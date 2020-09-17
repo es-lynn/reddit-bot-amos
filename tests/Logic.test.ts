@@ -222,12 +222,12 @@ describe('Logic', () => {
         'Is this what Amos Y- (ok I can hear the bot making angry noises) would have become if he had been given an elite education?'
       )
     ).toBeTruthy()
+  })
+
+  test('is not amos_yee thread', () => {
     expect(Logic.contains_amos_a_y_yee('AY')).toBeFalsy()
     expect(Logic.contains_amos_a_y_yee('A.Y')).toBeFalsy()
     expect(Logic.contains_amos_a_y_yee('A*** Y**')).toBeFalsy()
-  })
-
-  test('', () => {
     expect(
       Logic.is_amos_yee_comment({
         body:
