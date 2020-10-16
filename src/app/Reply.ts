@@ -14,7 +14,7 @@ export class Reply {
     str += "since we've had an intellectual discussion about Amos Yee!\n\n"
     str += `Last mentioned by ${last_post.author} `
     str += `on **${_.date._f(last_post.date, 'DD MMMM YYYY')}**`
-    str += `: [${last_post.title}](${last_post.url})\n\n`
+    str += `: [${last_post.title}](${last_post.url}?context=10000)\n\n`
     str += '----------\n\n'
     str += `[v${Cfg.VERSION}](https://github.com/aelesia/reddit-bot-amos) `
     str += 'by [aelesia](https://aelesia.github.io/) | '
