@@ -9,7 +9,7 @@ export default class Logic {
       this.contains_amos_yee_beside(comment.body) ||
       this.contains_amos_and_yee_exact(comment.body) ||
       this.contains_polocle(comment.body) ||
-      this.contains_amos_a_y_yee(comment.body)
+      this.contains__a_yee__amos_y__y_amos(comment.body)
     ) {
       Log.info('is_amos_yee_comment', comment.id)
       return true
@@ -24,7 +24,7 @@ export default class Logic {
       thread.title.toLowerCase().includes('amos') ||
       thread.title.toLowerCase().includes('polocle') ||
       this.contains_polocle(thread.body) ||
-      this.contains_amos_a_y_yee(thread.body)
+      this.contains__a_yee__amos_y__y_amos(thread.body)
     ) {
       Log.info('is_amos_yee_thread', thread.id)
       return true
@@ -41,13 +41,12 @@ export default class Logic {
     return /\bamos\b/g.test(text.toLowerCase()) && /\byee\b/g.test(text.toLowerCase())
   }
 
-  static contains_amos_a_y_yee(text: string): boolean {
+  static contains__a_yee__amos_y__y_amos(text: string): boolean {
     const lowerText = text.toLowerCase()
-    const yee = /(\b|_)yee(\b|_)/g.test(lowerText)
-    const amos = /(\b|_)amos(\b|_)/g.test(lowerText)
-    const y = /(\b|_)y(\b|_)/g.test(lowerText)
-    const a = /(\b|_)A(\b|_)/g.test(text)
-    if ((amos && y) || (a && yee)) {
+    const a_yee = /(\b|_)a(\b|_)[^a-zA-Z0-9]*yee/g.test(lowerText)
+    const amos_y = /amos[^a-zA-Z0-9]*y/g.test(lowerText)
+    const y_amos = /(\b|_)y(\b|_)[^a-zA-Z0-9]*amos/g.test(lowerText)
+    if (a_yee || amos_y || y_amos) {
       return true
     }
     return false
