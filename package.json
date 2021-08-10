@@ -1,6 +1,6 @@
 {
   "name": "reddit-bot-amos",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Triggers whenever Amos Yee is mentioned",
   "main": "handler.js",
   "scripts": {
