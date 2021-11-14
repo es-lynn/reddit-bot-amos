@@ -24,6 +24,16 @@ describe('Logic', () => {
     ).toEqual(true)
   })
 
+  test('Title doesnt contain amos', async () => {
+    // https://www.reddit.com/r/singapore/comments/qt0odc/delivering_pizzas_samosas_and_deepavali_cheer_to/hkgafmy/
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'Delivering pizzas, samosas and Deepavali cheer to 10,000 migrant workers in Singapore',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(false)
+  })
+
   test('Thread body contains "Amos Yee"', async () => {
     expect(
       Logic.is_amos_yee_thread({
@@ -58,13 +68,6 @@ describe('Logic', () => {
         body: 'some selftext'
       } as any)
     ).toEqual(true)
-    // https://www.reddit.com/r/singapore/comments/qt0odc/delivering_pizzas_samosas_and_deepavali_cheer_to/hkgafmy/
-    expect(
-      Logic.is_amos_yee_thread({
-        title: 'Delivering pizzas, samosas and Deepavali cheer to 10,000 migrant workers in Singapore',
-        body: 'some selftext'
-      } as any)
-    ).toEqual(false)
   })
 
   test('Comment contains "Amos Yee"', async () => {
