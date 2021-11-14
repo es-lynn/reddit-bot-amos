@@ -21,7 +21,7 @@ export default class Logic {
     if (
       this.contains_amos_yee_beside(thread.body) ||
       this.contains_amos_and_yee_exact(thread.body) ||
-      thread.title.toLowerCase().includes('amos') ||
+      /amos\b/g.test(thread.title.toLowerCase())||
       thread.title.toLowerCase().includes('polocle') ||
       this.contains_polocle(thread.body) ||
       this.contains__a_yee__amos_y__y_amos(thread.body)
