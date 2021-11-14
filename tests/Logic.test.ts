@@ -58,7 +58,7 @@ describe('Logic', () => {
         body: 'some selftext'
       } as any)
     ).toEqual(true)
-    // https://www.reddit.com/r/singapore/comments/qt0odc/delivering_pizzas_samosas_and_deepavali_cheer_to/
+    // https://www.reddit.com/r/singapore/comments/qt0odc/delivering_pizzas_samosas_and_deepavali_cheer_to/hkgafmy/
     expect(
       Logic.is_amos_yee_thread({
         title: 'Delivering pizzas, samosas and Deepavali cheer to 10,000 migrant workers in Singapore',
