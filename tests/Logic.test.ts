@@ -32,6 +32,18 @@ describe('Logic', () => {
         body: 'some selftext'
       } as any)
     ).toEqual(false)
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'Foo samos bar',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(false)
+    expect(
+      Logic.is_amos_yee_thread({
+        title: 'Foo amosa bar',
+        body: 'some selftext'
+      } as any)
+    ).toEqual(false)
   })
 
   test('Thread body contains "Amos Yee"', async () => {
